@@ -1,0 +1,5 @@
+[user]
+	name = David Dahlberg
+	email = dyn+git@dahlberg.cologne
+[push]
+	default = matching

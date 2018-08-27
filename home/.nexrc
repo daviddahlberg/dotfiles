@@ -1,0 +1,8 @@
+"set columns=80
+set comment
+set number
+set ruler
+set shiftwidth=4
+set showmatch
+set showmode
+set tabstop=8

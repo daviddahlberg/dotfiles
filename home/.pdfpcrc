@@ -1,0 +1,6 @@
+# PDF Presenter Console
+
+# Microsoft Presenter Mouse 8000
+bind XF86Forward next
+bind XF86Back prev
+bind XF86AudioPlay blank
