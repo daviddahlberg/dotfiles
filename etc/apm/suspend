@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# Lock Gnome screensavers
+for path in /var/run/user/*/; do
+        uid=$(basename $path)
+        if [ $uid -ge 1000 ]; then
+                user=$(id -un $uid)
+                export DISPLAY=:0
+                if doas -u $user dbus-send --session \
+                    --dest=org.freedesktop.DBus --type=method_call \
+                    --print-reply /org/freedesktop/DBus \
+                    org.freedesktop.DBus.ListNames | \
+                    grep -q org.gnome.ScreenSaver; then
+                        doas -u $user dbus-send --session --type=method_call \
+                            --dest=org.gnome.ScreenSaver \
+                            /org/gnome/ScreenSaver org.gnome.ScreenSaver.Lock
+                fi
+        fi
+done
